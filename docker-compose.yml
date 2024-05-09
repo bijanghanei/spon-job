@@ -1,0 +1,40 @@
+version: '3'
+services:
+  scraper-db:
+    container_name: scraper-db
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME:-root}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-password}
+      POSTGRES_DB: ${DATABASE_NAME:-scraperdb}
+    networks:
+      - scraper-net
+    volumes:
+      - db-data:/var/lib/dbdata
+  scraper-pgadmin:
+    container_name: scrape-pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - "6071:43251"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@admin.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin@admin}
+      PGADMIN_LISTEN_PORT: 43251
+    depends_on:
+      - scraper-db
+    networks:
+      - scraper-net
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+networks:
+  scraper-net:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
+  pgadmin:
+    driver: local
