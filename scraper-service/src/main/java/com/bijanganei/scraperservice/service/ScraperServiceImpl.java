@@ -19,6 +19,7 @@ public class ScraperServiceImpl implements ScraperService{
     //    method that searches content of each job post for sponsorship related words
     @Override
     public boolean checkJobDescription(String url) {
+
         // convert HTML in Document
 
         // select the element that contains job content
