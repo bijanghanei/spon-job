@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface ScraperService {
     boolean checkJobDescription(String url) throws IOException;
-    List<JobPost> extractJobs(String url);
+    List<JobPost> extractJobs(String url) throws IOException;
     List<JobPost> getAllJobs();
     JobPost getJobById(String id);
     void removeJobById(String id);

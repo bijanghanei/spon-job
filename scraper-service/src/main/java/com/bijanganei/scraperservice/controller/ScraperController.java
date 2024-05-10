@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/scraper")
@@ -26,8 +27,13 @@ public class ScraperController {
     @GetMapping("/test")
     public void Test(){
         System.out.println("controller is alright");
+//        try {
+//            boolean test = scraperService.checkJobDescription("https://www.linkedin.com/jobs/view/3917137008");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         try {
-            boolean test = scraperService.checkJobDescription("https://www.linkedin.com/jobs/view/3917137008");
+            List<JobPost> test = scraperService.extractJobs("https://www.linkedin.com/jobs/search?keywords=Java%20Developer%20&location=Netherlands&geoId=102890719&f_TPR=r86400&position=1&pageNum=0");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

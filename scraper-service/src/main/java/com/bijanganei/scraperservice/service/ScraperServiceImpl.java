@@ -2,6 +2,7 @@ package com.bijanganei.scraperservice.service;
 
 import com.bijanganei.scraperservice.entity.JobPost;
 import com.bijanganei.scraperservice.repository.ScraperRepository;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 @Service
 public class ScraperServiceImpl implements ScraperService{
@@ -64,8 +66,14 @@ public class ScraperServiceImpl implements ScraperService{
     }
 
     @Override
-    public List<JobPost> extractJobs(String url) {
+    public List<JobPost> extractJobs(String url) throws IOException {
         // convert HTML of job postings list page to Document
+
+        // TODO : find a way to login then fetch html
+
+        Document document = Jsoup.connect(url).get();
+        System.out.println(document);
+
 
         // select the element that contains the list
 
