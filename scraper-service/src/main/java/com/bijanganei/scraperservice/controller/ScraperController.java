@@ -33,7 +33,8 @@ public class ScraperController {
 //            throw new RuntimeException(e);
 //        }
         try {
-            List<JobPost> test = scraperService.extractJobs("https://www.linkedin.com/jobs/search?keywords=Java%20Developer%20&location=Netherlands&geoId=102890719&f_TPR=r86400&position=1&pageNum=0");
+            List<JobPost> test = scraperService.extractJobs("https://www.linkedin.com/jobs/search/?currentJobId=3909631467&geoId=102890719&keywords=java%20developer&location=Netherlands&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&refresh=true");
+//            boolean test = scraperService.checkJobDescription("https://www.linkedin.com/jobs/view/3881531273/?eBP=NOT_ELIGIBLE_FOR_CHARGING&refId=yFLl%2BS%2FMAX2Kz4qBEIELsQ%3D%3D&trackingId=c4QhioqAttrp3u3ewi%2Bcaw%3D%3D&trk=flagship3_search_srp_jobs");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
