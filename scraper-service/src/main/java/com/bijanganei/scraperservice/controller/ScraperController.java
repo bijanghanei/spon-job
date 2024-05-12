@@ -39,4 +39,9 @@ public class ScraperController {
     public void removeJob(@PathVariable String id){
         scraperService.removeJobById(id);
     }
+
+    @GetMapping
+    public void test(){
+        scraperService.checkJobDescription()
+    }
 }
