@@ -55,23 +55,24 @@ public class ScraperServiceImpl implements ScraperService{
             String href = link.attr("href");
 
             // TODO : find a solution for not saving duplicate job posts
+            String id = href.substring(href.length()-10);
 
             JobPost job = new JobPost();
+            job.setId(id);
             job.setTitle(introText);
             job.setIntroduction(introText);
             job.setUrl(href);
             job.setTitle(titleText);
 
 
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            System.out.println(href);
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
             return job;
         }
-
-
         return null;
     }
 
