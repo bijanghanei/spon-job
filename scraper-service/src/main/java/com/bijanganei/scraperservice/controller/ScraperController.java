@@ -42,6 +42,10 @@ public class ScraperController {
 
     @GetMapping
     public void test(){
-        scraperService.checkJobDescription()
+        try {
+            JobPost job = scraperService.checkJobDescription("https://www.linkedin.com/jobs/view/3917137008");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
